@@ -8,7 +8,7 @@ module Rack
 
     def initialize(app, options={})
       @app = app
-      @invoice_storage = {}
+      @invoice_storage = {} # TODO: don't store this in memory!
       @options = options
       @price = @options[:price] || 100
       @options[:address] ||= 'localhost:10009'
