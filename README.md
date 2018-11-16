@@ -1,6 +1,6 @@
 # Rack::Lightning - micropayments for your rack app
 
-[Rack middleware](https://rack.github.io/) for requesting Bitcoin [Lightning payments](http://lightning.network/) per request.
+[Rack middleware](https://rack.github.io/) for requesting Bitcoin [Lightning payments](http://lightning.network/) for HTTP request.
 
 Status: alpha - proof of concept
 
