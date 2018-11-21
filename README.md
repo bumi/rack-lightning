@@ -51,6 +51,25 @@ The middleware accepts the following configuration options:
 * `address`: the address of the lnd gRPC service( default: localhost:10009)
 * `credentials_path`: path to the tls.cert (default: ~/.lnd/tls.cert)
 * `macaroon_path`: path to the macaroon path (default: ~/.lnd/data/chain/bitcoin/testnet/admin.macaroon)
+* `credentials`: instead of configuring a `credentials_path` you can pass the content of the tls.cert directly
+* `macaroon`: instead of configuring a `macaroon_path` you can pass the hex content of the macaroon directly
+
+### How to pass credentials or macaroon data from a variable like a environment varibale?
+
+The tls.cert and the macaroon config can be loaded from a variable:
+
+```ruby
+ENV['LND_CREDENTIALS'] = "the content of your tls.cert file"
+ENV['LND_MACAROON'] = "the hex encoded content of your macaroon file"
+# you can get the macaroon content like this: 
+# ::File.read(::File.expand_path("/path/to/admin.macaroon")).each_byte.map { |b| b.to_s(16).rjust(2,'0') }.join 
+
+Example = Rack::Builder.new {
+  use Rack::Lightning, { macaroon: ENV['LND_MACAROON'], credentials: ENV['LND_CREDENTIALS'] } 
+  run Proc.new { |env| ['200', {'Content-Type' => 'text/html'}, ['get rack\'d']] }
+}.to_app
+```
+
 
 ## What is the Lightning Network?
 
