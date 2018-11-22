@@ -7,7 +7,7 @@ Status: alpha - proof of concept
 ## How does it work?
 
 1. On the first request a Lightning invoice is created and th `402 Payment Required` HTTP status code is returend 
-with a `application/vnd.lightning.bolt11` header and a Lightning invoice as a body.
+with a `application/vnd.lightning.bolt11` content type header and a Lightning invoice as a body.
 2. Once the client has paid the invoice it does a second request providing the proof of payment / the preimage of the Lightning
 payment in a `X-Preimage` header. The middleware checks the if the invoice was paid and continues with the rack app stack
 
