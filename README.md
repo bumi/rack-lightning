@@ -61,8 +61,8 @@ The tls.cert and the macaroon config can be loaded from a variable:
 ```ruby
 ENV['LND_CREDENTIALS'] = "the content of your tls.cert file"
 ENV['LND_MACAROON'] = "the hex encoded content of your macaroon file"
-# you can get the macaroon content like this: `xxd -p -c2000 admin.macaroon`
-# or `::File.read(::File.expand_path("/path/to/admin.macaroon")).each_byte.map { |b| b.to_s(16).rjust(2,'0') }.join`
+# you can get the macaroon content like this: xxd -p -c2000 admin.macaroon
+# or ::File.read(::File.expand_path("/path/to/admin.macaroon")).each_byte.map { |b| b.to_s(16).rjust(2,'0') }.join
 
 Example = Rack::Builder.new {
   use Rack::Lightning, { macaroon: ENV['LND_MACAROON'], credentials: ENV['LND_CREDENTIALS'] } 
