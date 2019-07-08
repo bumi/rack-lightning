@@ -1,7 +1,6 @@
 require "rack/lightning/version"
 require 'digest'
-
-require 'rack/lightning/rpc_services_pb'
+require 'lnrpc'
 
 module Rack
   class Lightning
